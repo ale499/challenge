@@ -51,6 +51,7 @@ export default function JobList() {
         uuid: candidate.uuid,
         jobId,
         candidateId: candidate.candidateId,
+        applicationId: candidate.applicationId,
         repoUrl: repoUrls[jobId],
       };
 
@@ -60,6 +61,7 @@ export default function JobList() {
 
       setSuccessJobId(jobId);
     } catch (err) {
+      console.error("applyToJob error", err);
       setError(err.message);
     } finally {
       setLoading(false);

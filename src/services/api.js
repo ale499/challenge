@@ -35,7 +35,8 @@ export async function applyToJob(body) {
   );
 
   if (!response.ok) {
-    throw new Error("Error applying to job");
+    const errorText = await response.text();
+    throw new Error(`Error applying to job: ${errorText || response.status}`);
   }
 
   return response.json();
